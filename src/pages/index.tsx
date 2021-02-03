@@ -1,7 +1,24 @@
 import Head from 'next/head'
-import styles from '../styles/Home.module.css'
+import styles from '../../styles/Home.module.css'
+import {useDispatch, useSelector} from "react-redux";
+import {State, wrapper} from "../redux/store";
+import {useEffect} from "react";
+import {actions} from "../redux/actions";
+import {AnyAction} from "redux";
 
-export default function Home() {
+function Home() {
+  const state = useSelector<State, State>(state=>state);
+  const dispatch = useDispatch();
+
+  useEffect(()=>{
+    console.log("state", state)
+  },[state]);
+
+  useEffect(()=>{
+    dispatch(actions.updateTick("hello"))
+  },[])
+
+
   return (
     <div className={styles.container}>
       <Head>
@@ -63,3 +80,12 @@ export default function Home() {
     </div>
   )
 }
+
+export const getServerSideProps = wrapper.getServerSideProps(
+    ({store, req, res, ...etc}) => {
+      console.log('2. Page.getServerSideProps uses the store to dispatch things');
+      store.dispatch(actions.updateTick("Server pagey") as AnyAction);
+    }
+)
+
+export default Home
