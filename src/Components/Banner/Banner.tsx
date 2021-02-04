@@ -9,14 +9,14 @@ function Banner(): JSX.Element {
 
   const fetchUrl = async (url: string) => {
     try {
-      const { data }: Array<any> = await tmdbInstance.get(url);
+      const { data } = await tmdbInstance.get(url);
       return data.results;
     } catch (e) {
       return e;
     }
   };
 
-  function getRandomInt(min, max) {
+  function getRandomInt(min: number, max: number) {
     min = Math.ceil(min);
     max = Math.floor(max);
     return Math.floor(Math.random() * (max - min + 1)) + min;
@@ -65,8 +65,6 @@ function Banner(): JSX.Element {
       </div>
 
       <div className={styles.banner_gradient}></div>
-
-      <div className={styles.footer_gradient}></div>
     </header>
   );
 }

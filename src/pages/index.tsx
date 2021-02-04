@@ -8,7 +8,7 @@ import Row from "../Components/Row/Row";
 import requests from "../tmdb";
 import Banner from "../Components/Banner/Banner";
 
-function Home({ mutter }) {
+function Home() {
   const state = useSelector<State, State>((state) => state);
   const dispatch: any = useDispatch();
 

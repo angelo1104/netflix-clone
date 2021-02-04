@@ -1,10 +1,10 @@
-import React, { FC } from "react";
+import React from "react";
 import "../../styles/globals.scss";
 import { AppProps } from "next/app";
 import { wrapper } from "../redux/store";
 import Head from "next/head";
 
-function MyApp({ Component, pageProps }: FC<AppProps>): JSX.Element {
+function MyApp({ Component, pageProps }: AppProps): JSX.Element {
   return (
     <>
       <Head>

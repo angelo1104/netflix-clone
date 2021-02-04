@@ -2,13 +2,19 @@ import React, { useEffect, useState } from "react";
 import styles from "./Row.module.scss";
 import tmdbInstance from "../../axios/tmdbApi";
 
-function Row({ title, movieUrl, largeImage }): JSX.Element {
-  const [movies, setMovies] = useState([]);
+interface Props {
+  title: string;
+  movieUrl: string;
+  largeImage?: boolean | null | undefined;
+}
+
+function Row({ title, movieUrl, largeImage }: Props): JSX.Element {
+  const [movies, setMovies] = useState<Array<any>>([]);
   const baseUrl: string = "https://image.tmdb.org/t/p/original";
 
   const fetchUrl = async (url: string) => {
     try {
-      const { data }: Array<any> = await tmdbInstance.get(url);
+      const { data } = await tmdbInstance.get(url);
       return data.results;
     } catch (e) {
       return e;
@@ -38,7 +44,7 @@ function Row({ title, movieUrl, largeImage }): JSX.Element {
           !largeImage ? (
             <img
               src={`${baseUrl}${
-                largeImage ? movie.poster_path : movie.backdrop_path
+                largeImage ? movie?.poster_path : movie?.backdrop_path
               }`}
               key={index}
               alt={"movie image"}
@@ -46,7 +52,7 @@ function Row({ title, movieUrl, largeImage }): JSX.Element {
             />
           ) : (
             <img
-              src={`${baseUrl}${movie.poster_path}`}
+              src={`${baseUrl}${movie?.poster_path}`}
               alt="movie image"
               key={index}
               className={styles.row_poster_large}

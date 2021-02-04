@@ -1,6 +1,6 @@
 const config = {
   sassOptions: {
-    cssModules: false,
+    cssModules: true,
   },
   images: {
     domains: ["image.tmdb.org"],
