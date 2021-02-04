@@ -12,3 +12,5 @@ const requests = {
 };
 
 export default requests;
+
+export { API_KEY };
