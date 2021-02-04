@@ -19,3 +19,16 @@ a {
   background-color: #000000;
   min-height: 100vh;
 }
+
+.footer-gradient{
+  height: 7.4rem;
+  background-image: linear-gradient(180deg, transparent, rgba(37, 37, 37, 0.61), #111);
+  position: absolute;
+  width: 100%;
+  top: -7.4rem;
+  left: 0;
+}
+
+.content-netflix{
+  position: relative;
+}

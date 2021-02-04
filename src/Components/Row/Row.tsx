@@ -16,6 +16,10 @@ function Row({ title, movieUrl, largeImage }): JSX.Element {
   };
 
   useEffect(() => {
+    console.log(movies);
+  }, [movies]);
+
+  useEffect(() => {
     fetchUrl(movieUrl)
       .then((movies) => {
         setMovies(movies);
@@ -33,7 +37,9 @@ function Row({ title, movieUrl, largeImage }): JSX.Element {
         {movies.map((movie, index) =>
           !largeImage ? (
             <img
-              src={`${baseUrl}${movie.poster_path}`}
+              src={`${baseUrl}${
+                largeImage ? movie.poster_path : movie.backdrop_path
+              }`}
               key={index}
               alt={"movie image"}
               className={styles.row_poster}

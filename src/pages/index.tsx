@@ -6,6 +6,7 @@ import { actions } from "../redux/actions";
 import { AnyAction } from "redux";
 import Row from "../Components/Row/Row";
 import requests from "../tmdb";
+import Banner from "../Components/Banner/Banner";
 
 function Home({ mutter }) {
   const state = useSelector<State, State>((state) => state);
@@ -27,21 +28,26 @@ function Home({ mutter }) {
       </Head>
 
       <main>
-        <Row
-          title={"Trending"}
-          movieUrl={requests.fetchTrending}
-          largeImage={true}
-        />
-        <Row
-          title={"NETFLIX ORIGINALS"}
-          movieUrl={requests.fetchNetflixOriginals}
-        />
-        <Row title={"Top Rated"} movieUrl={requests.fetchTopRated} />
-        <Row title={"Action Movies"} movieUrl={requests.fetchActionMovies} />
-        <Row title={"Comedy Movies"} movieUrl={requests.fetchComedyMovies} />
-        <Row title={"Horror Movies"} movieUrl={requests.fetchHorrorMovies} />
-        <Row title={"Romance"} movieUrl={requests.fetchRomanceMovies} />
-        <Row title={"Documentaries"} movieUrl={requests.fetchDocumentaries} />
+        <Banner />
+
+        <div className={"content-netflix"}>
+          <div className={"footer-gradient"}></div>
+          <Row
+            title={"Trending"}
+            movieUrl={requests.fetchTrending}
+            largeImage={true}
+          />
+          <Row
+            title={"NETFLIX ORIGINALS"}
+            movieUrl={requests.fetchNetflixOriginals}
+          />
+          <Row title={"Top Rated"} movieUrl={requests.fetchTopRated} />
+          <Row title={"Action Movies"} movieUrl={requests.fetchActionMovies} />
+          <Row title={"Comedy Movies"} movieUrl={requests.fetchComedyMovies} />
+          <Row title={"Horror Movies"} movieUrl={requests.fetchHorrorMovies} />
+          <Row title={"Romance"} movieUrl={requests.fetchRomanceMovies} />
+          <Row title={"Documentaries"} movieUrl={requests.fetchDocumentaries} />
+        </div>
       </main>
     </div>
   );
