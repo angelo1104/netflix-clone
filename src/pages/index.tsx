@@ -20,7 +20,7 @@ function Home({ mutter }) {
   }, []);
 
   return (
-    <div>
+    <div className={"app"}>
       <Head>
         <title>Create Next App</title>
         <link rel="icon" href="/favicon.ico" />
@@ -28,11 +28,20 @@ function Home({ mutter }) {
 
       <main>
         <Row
+          title={"Trending"}
+          movieUrl={requests.fetchTrending}
+          largeImage={true}
+        />
+        <Row
           title={"NETFLIX ORIGINALS"}
           movieUrl={requests.fetchNetflixOriginals}
         />
-        <Row title={"Trending"} movieUrl={requests.fetchTrending} />
+        <Row title={"Top Rated"} movieUrl={requests.fetchTopRated} />
+        <Row title={"Action Movies"} movieUrl={requests.fetchActionMovies} />
+        <Row title={"Comedy Movies"} movieUrl={requests.fetchComedyMovies} />
+        <Row title={"Horror Movies"} movieUrl={requests.fetchHorrorMovies} />
         <Row title={"Romance"} movieUrl={requests.fetchRomanceMovies} />
+        <Row title={"Documentaries"} movieUrl={requests.fetchDocumentaries} />
       </main>
     </div>
   );

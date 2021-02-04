@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import styles from "./Row.module.scss";
 import tmdbInstance from "../../axios/tmdbApi";
 
-function Row({ title, movieUrl }): JSX.Element {
+function Row({ title, movieUrl, largeImage }): JSX.Element {
   const [movies, setMovies] = useState([]);
   const baseUrl: string = "https://image.tmdb.org/t/p/original";
 
@@ -30,14 +30,23 @@ function Row({ title, movieUrl }): JSX.Element {
       <h2 className={styles.row_title}>{title}</h2>
 
       <div className={styles.row_posters}>
-        {movies.map((movie, index) => (
-          <img
-            src={`${baseUrl}${movie.poster_path}`}
-            key={index}
-            alt={"movie image"}
-            className={styles.row_poster}
-          />
-        ))}
+        {movies.map((movie, index) =>
+          !largeImage ? (
+            <img
+              src={`${baseUrl}${movie.poster_path}`}
+              key={index}
+              alt={"movie image"}
+              className={styles.row_poster}
+            />
+          ) : (
+            <img
+              src={`${baseUrl}${movie.poster_path}`}
+              alt="movie image"
+              key={index}
+              className={styles.row_poster_large}
+            />
+          )
+        )}
       </div>
     </div>
   );
