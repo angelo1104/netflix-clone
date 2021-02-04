@@ -7,6 +7,7 @@ import { AnyAction } from "redux";
 import Row from "../Components/Row/Row";
 import requests from "../tmdb";
 import Banner from "../Components/Banner/Banner";
+import Navbar from "../Components/NavBar/Navbar";
 
 function Home() {
   const state = useSelector<State, State>((state) => state);
@@ -28,19 +29,18 @@ function Home() {
       </Head>
 
       <main>
+        <Navbar />
+
         <Banner />
 
         <div className={"content-netflix"}>
           <div className={"footer-gradient"}></div>
           <Row
-            title={"Trending"}
-            movieUrl={requests.fetchTrending}
-            largeImage={true}
-          />
-          <Row
             title={"NETFLIX ORIGINALS"}
             movieUrl={requests.fetchNetflixOriginals}
+            largeImage={true}
           />
+          <Row title={"Trending"} movieUrl={requests.fetchTrending} />
           <Row title={"Top Rated"} movieUrl={requests.fetchTopRated} />
           <Row title={"Action Movies"} movieUrl={requests.fetchActionMovies} />
           <Row title={"Comedy Movies"} movieUrl={requests.fetchComedyMovies} />

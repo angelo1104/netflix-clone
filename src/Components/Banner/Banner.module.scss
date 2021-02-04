@@ -9,7 +9,7 @@
 }
 
 .banner_content{
-  padding: 40px 50px 20px;
+  padding: 80px 50px 20px;
   z-index: 2;
   position: absolute;
 }
@@ -59,7 +59,7 @@
   height: 100%;
   top: 0;
   left: 0;
-  background: rgb(2,0,36);
-  background: radial-gradient(circle, rgba(2,0,36,0) 63%, rgba(0,0,0,0.4) 100%);
+  background: rgb(131,58,180);
+  background: radial-gradient(circle, rgba(131,58,180,0) 55%, rgba(17,17,17,0.7) 93%, rgba(0,0,0,0.8) 100%);
   z-index: 1;
 }
