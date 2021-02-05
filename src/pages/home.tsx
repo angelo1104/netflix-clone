@@ -1,4 +1,4 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { State, wrapper } from "../redux/store";
 import { useEffect } from "react";
 import { actions } from "../redux/actions";
@@ -7,18 +7,15 @@ import Row from "../Components/Row/Row";
 import requests from "../tmdb";
 import Banner from "../Components/Banner/Banner";
 import Navbar from "../Components/NavBar/Navbar";
+import { NextRouter, useRouter } from "next/router";
 
 function Home() {
-  const state = useSelector<State, State>((state) => state);
-  const dispatch: any = useDispatch();
+  const { user } = useSelector<State, State>((state) => state);
+  const router: NextRouter = useRouter();
 
   useEffect(() => {
-    console.log("state", state);
-  }, [state]);
-
-  useEffect(() => {
-    dispatch(actions.updateTick("helly"));
-  }, []);
+    if (!user) router.replace("/");
+  }, [user]);
 
   return (
     <div className={"app"}>

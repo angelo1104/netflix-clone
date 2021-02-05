@@ -4,18 +4,16 @@ import { useEffect } from "react";
 import { actions } from "../redux/actions";
 import { AnyAction } from "redux";
 import Top from "../Components/Top/Top";
+import { NextRouter, useRouter } from "next/router";
 
 function Home() {
-  const state = useSelector<State, State>((state) => state);
-  const dispatch: any = useDispatch();
+  const { user } = useSelector<State, State>((state) => state);
+
+  const router: NextRouter = useRouter();
 
   useEffect(() => {
-    console.log("state", state);
-  }, [state]);
-
-  useEffect(() => {
-    dispatch(actions.updateTick("helly"));
-  }, []);
+    if (user) router.replace("/home");
+  }, [user]);
 
   return (
     <div className={"app"}>

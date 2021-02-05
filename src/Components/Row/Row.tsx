@@ -36,10 +36,6 @@ function Row({ title, movieUrl, largeImage }: Props): JSX.Element {
   };
 
   useEffect(() => {
-    console.log(movies);
-  }, [movies]);
-
-  useEffect(() => {
     fetchUrl(movieUrl)
       .then((movies) => {
         setMovies(movies);

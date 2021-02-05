@@ -20,6 +20,7 @@ const reducer = (
         ...action.payload, // apply delta from hydration
       };
       if (state.tick) nextState.tick = state.tick; // preserve count value on client side navigation
+      if (state.user) nextState.user = state.user;
       return nextState;
     case actionTypes.updateTick:
       return { ...state, tick: action.payload };

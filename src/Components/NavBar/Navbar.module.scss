@@ -1,4 +1,4 @@
-.navbar{
+.navbar {
   display: flex;
   justify-content: space-between;
   width: 100%;
@@ -10,14 +10,16 @@
   transition: background-color 300ms ease-out;
 }
 
-.logo{
+.logo {
   object-fit: contain;
+  cursor: pointer;
 }
 
-.avatar{
+.avatar {
   object-fit: contain;
+  cursor: pointer;
 }
 
-.nav_dark{
+.nav_dark {
   background-color: #111111;
 }
