@@ -1,0 +1,75 @@
+@import "src/Components/Top/Top.module";
+
+.login_container {
+  @extend .top;
+}
+
+.top_logo {
+  @extend .top_bar;
+  margin-bottom: 0;
+}
+
+.top_login {
+  @extend .top_content;
+  background-color: rgba(0, 0, 0, 0.6);
+  width: 35%;
+  border-radius: 3px;
+  margin: auto;
+  height: fit-content;
+  align-items: flex-start;
+  justify-content: flex-start;
+  padding: 20px 5% 50px;
+}
+
+.sign_in_title {
+  font-family: "Inter", sans-serif;
+  font-size: 40px;
+  color: #ffffff;
+  margin-bottom: 40px;
+}
+
+.input {
+  height: 45px;
+  border-radius: 3px;
+  width: 100%;
+  border: 1px solid #8c8c8c;
+  outline-width: 0;
+  font-size: 16px;
+  font-family: "Inter", sans-serif;
+  padding: 3px 10px;
+  margin-bottom: 30px;
+}
+
+.button {
+  @extend .sign_in_button;
+  width: 100%;
+  font-family: "Inter", sans-serif;
+  font-size: 18px;
+  font-weight: 700;
+  padding: 15px 0;
+  height: fit-content;
+}
+
+.new {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  font-weight: 300;
+  margin-top: 30px;
+  color: gray;
+}
+
+.sign_up_link {
+  cursor: pointer;
+  color: white;
+}
+
+.sign_up_link:hover {
+  text-decoration: underline white;
+}
+
+.error {
+  font-family: "Inter", sans-serif;
+  font-size: 16px;
+  color: #e50914;
+  margin-top: -10px;
+}

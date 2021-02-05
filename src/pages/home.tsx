@@ -1,4 +1,3 @@
-import Head from "next/head";
 import { useDispatch, useSelector } from "react-redux";
 import { State, wrapper } from "../redux/store";
 import { useEffect } from "react";
@@ -23,11 +22,6 @@ function Home() {
 
   return (
     <div className={"app"}>
-      <Head>
-        <title>Create Next App</title>
-        <link rel="icon" href="/favicon.ico" />
-      </Head>
-
       <main>
         <Navbar />
 

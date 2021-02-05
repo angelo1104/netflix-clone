@@ -2,15 +2,23 @@ import React from "react";
 import styles from "./Top.module.scss";
 import Image from "next/image";
 import logo from "../NavBar/netflix-logo.svg";
+import { NextRouter, useRouter } from "next/router";
 
 function Top(): JSX.Element {
+  const router: NextRouter = useRouter();
+
   return (
     <div className={styles.top}>
       <div className={styles.content}>
         <div className={styles.top_bar}>
           <Image src={logo} alt={"netflix logo"} width={130} height={80} />
 
-          <button className={styles.sign_in_button}>Sign in</button>
+          <button
+            className={styles.sign_in_button}
+            onClick={() => router.push("/auth/login")}
+          >
+            Sign in
+          </button>
         </div>
 
         <div className={styles.top_content}>
