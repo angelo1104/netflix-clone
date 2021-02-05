@@ -4,7 +4,10 @@ import { State, wrapper } from "../redux/store";
 import { useEffect } from "react";
 import { actions } from "../redux/actions";
 import { AnyAction } from "redux";
-import Top from "../Components/Top/Top";
+import Row from "../Components/Row/Row";
+import requests from "../tmdb";
+import Banner from "../Components/Banner/Banner";
+import Navbar from "../Components/NavBar/Navbar";
 
 function Home() {
   const state = useSelector<State, State>((state) => state);
@@ -26,7 +29,25 @@ function Home() {
       </Head>
 
       <main>
-        <Top></Top>
+        <Navbar />
+
+        <Banner />
+
+        <div className={"content-netflix"}>
+          <div className={"footer-gradient"}></div>
+          <Row
+            title={"NETFLIX ORIGINALS"}
+            movieUrl={requests.fetchNetflixOriginals}
+            largeImage={true}
+          />
+          <Row title={"Trending"} movieUrl={requests.fetchTrending} />
+          <Row title={"Top Rated"} movieUrl={requests.fetchTopRated} />
+          <Row title={"Action Movies"} movieUrl={requests.fetchActionMovies} />
+          <Row title={"Comedy Movies"} movieUrl={requests.fetchComedyMovies} />
+          <Row title={"Horror Movies"} movieUrl={requests.fetchHorrorMovies} />
+          <Row title={"Romance"} movieUrl={requests.fetchRomanceMovies} />
+          <Row title={"Documentaries"} movieUrl={requests.fetchDocumentaries} />
+        </div>
       </main>
     </div>
   );
