@@ -26,7 +26,7 @@ function AuthProvider({ children }: Props): JSX.Element {
             Cookies.set("firebase", idToken);
           })
           .catch((error: any) => {
-            Cookies.set("firebase", null);
+            Cookies.set("firebase", "");
             console.log("error", error);
           });
       } else {
