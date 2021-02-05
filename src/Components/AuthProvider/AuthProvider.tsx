@@ -3,6 +3,7 @@ import { auth } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../redux/actions";
 import { State } from "../../redux/store";
+import Cookies from "js-cookie";
 
 interface Props {
   children: any;
@@ -18,6 +19,16 @@ function AuthProvider({ children }: Props): JSX.Element {
       if (user) {
         //she is signed in and hot.
         dispatch(actions.updateUser(user));
+
+        auth.currentUser
+          ?.getIdToken()
+          .then((idToken) => {
+            Cookies.set("firebase", idToken);
+          })
+          .catch((error: any) => {
+            Cookies.set("firebase", null);
+            console.log("error", error);
+          });
       } else {
         //she is not signed in yet hot
         dispatch(actions.updateUser(null));

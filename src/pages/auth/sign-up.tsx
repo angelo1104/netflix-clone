@@ -1,5 +1,9 @@
 import React from "react";
 import SignUp from "../../Components/SignUp/SignUp";
+import { wrapper } from "../../redux/store";
+import nookies from "nookies";
+import admin from "firebase-admin";
+import account from "../../firebase-account.json";
 
 function SignUpPage(): JSX.Element {
   return (
@@ -10,10 +14,3 @@ function SignUpPage(): JSX.Element {
 }
 
 export default SignUpPage;
-
-// export const getServerSideProps = wrapper.getServerSideProps(
-//     ({store, req, res, ...etc}) => {
-//         console.log('2. Page.getServerSideProps uses the store to dispatch things');
-//         store.dispatch({type: 'TICK', payload: 'was set in other page'});
-//     }
-// );

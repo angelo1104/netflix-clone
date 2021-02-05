@@ -1,0 +1,67 @@
+@import "../Login/Login.module";
+
+.profile {
+  min-height: 100vh;
+  background-color: #111111;
+  color: white;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.title {
+  font-family: "Inter", sans-serif;
+  font-size: 60px;
+  font-weight: 500;
+  text-align: left;
+  margin-bottom: 10px;
+}
+
+.profile_content {
+  min-width: 55%;
+  margin-top: 10%;
+}
+
+.divider {
+  height: 3px;
+  background-color: #222222;
+  border: 1px solid #222222;
+  width: 100%;
+}
+
+.main {
+  display: flex;
+  padding: 10px;
+}
+
+.main_left {
+  padding: 0 20px;
+  flex: 1;
+}
+
+.avatar {
+  height: 100px;
+}
+
+.email_input {
+  height: 32px;
+  background-color: #818081;
+  border: none;
+  color: white;
+  width: 100%;
+  padding: 20px 15px;
+  font-size: 16px;
+}
+
+.plans_title {
+  font-family: "Inter", sans-serif;
+  font-size: 30px;
+  font-weight: 600;
+  margin: 20px auto;
+}
+
+.sign_out {
+  @extend .button;
+  height: 50px;
+  margin-top: 20px;
+}

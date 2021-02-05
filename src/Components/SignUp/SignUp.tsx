@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./SignUp.module.scss";
 import Image from "next/image";
 import logo from "../NavBar/netflix-logo.svg";
@@ -6,6 +6,8 @@ import { NextRouter, useRouter } from "next/router";
 import { auth } from "../../firebase/firebase";
 import loader from "../../lottie/loader.json";
 import Lottie from "react-lottie";
+import { useSelector } from "react-redux";
+import { State } from "../../redux/store";
 
 function SignUp(): JSX.Element {
   const router: NextRouter = useRouter();
@@ -14,6 +16,12 @@ function SignUp(): JSX.Element {
   const [password, setPassword] = useState<string>("");
   const [error, setError] = useState<string>("");
   const [processing, setProcessing] = useState<boolean>(false);
+
+  const { user } = useSelector((state: State) => state);
+
+  useEffect(() => {
+    if (user) router.replace("/profile");
+  }, [user]);
 
   const signUp = async () => {
     setProcessing(true);
