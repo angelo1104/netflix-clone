@@ -2,6 +2,7 @@ import React, { useEffect } from "react";
 import { auth } from "../../firebase/firebase";
 import { useDispatch, useSelector } from "react-redux";
 import { actions } from "../../redux/actions";
+import { State } from "../../redux/store";
 
 interface Props {
   children: any;
@@ -9,7 +10,8 @@ interface Props {
 
 function AuthProvider({ children }: Props): JSX.Element {
   const dispatch = useDispatch();
-  const { user } = useSelector((state) => state);
+
+  const { user } = useSelector((state: State) => state);
 
   useEffect(() => {
     auth.onAuthStateChanged((user) => {

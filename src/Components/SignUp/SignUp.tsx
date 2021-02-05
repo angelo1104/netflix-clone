@@ -58,7 +58,7 @@ function SignUp(): JSX.Element {
             className={styles.button}
             onClick={signUp}
             disabled={processing}
-            style={{ opacity: processing && 0.6 }}
+            style={{ opacity: processing ? "0.6" : "1" }}
           >
             {!processing ? (
               "Sign Up"
