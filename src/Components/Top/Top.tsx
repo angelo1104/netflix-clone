@@ -3,7 +3,6 @@ import styles from "./Top.module.scss";
 import Image from "next/image";
 import logo from "../NavBar/netflix-logo.svg";
 import { NextRouter, useRouter } from "next/router";
-import Info from "./Info/Info";
 
 function Top(): JSX.Element {
   const router: NextRouter = useRouter();
