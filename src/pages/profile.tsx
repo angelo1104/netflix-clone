@@ -17,6 +17,12 @@ function ProfilePage() {
 
 export default ProfilePage;
 
+export async function getServerSideProps(context: any) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}
+
 // export const getServerSideProps = wrapper.getServerSideProps(
 //   async (context) => {
 //     const cookie: any = nookies.get(context);

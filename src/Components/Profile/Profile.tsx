@@ -12,8 +12,14 @@ function Profile(): JSX.Element {
   const { user } = useSelector((state: State) => state);
   const router: NextRouter = useRouter();
 
+  const { success, plan } = router.query;
+
   useEffect(() => {
-    if (!user) router.replace("/auth/login");
+    console.log("success", success, plan);
+  }, []);
+
+  useEffect(() => {
+    if (!auth.currentUser?.email) router.replace("/auth/login");
   }, [user]);
 
   const signOut = () => {

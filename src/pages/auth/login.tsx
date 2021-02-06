@@ -14,3 +14,9 @@ function LoginPage() {
 }
 
 export default Login;
+
+export async function getServerSideProps(context: any) {
+  return {
+    props: {}, // will be passed to the page component as props
+  };
+}

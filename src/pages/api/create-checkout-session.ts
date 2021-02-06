@@ -13,9 +13,10 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
     interface Body {
       plan: string;
       origin: string;
+      uid: string;
     }
 
-    const { plan, origin }: Body = req.body;
+    const { plan, origin, uid }: Body = req.body;
 
     try {
       const session: any = await stripe.checkout.sessions.create({
@@ -28,8 +29,8 @@ const handler = async (req: NextApiRequest, res: NextApiResponse) => {
             quantity: 1,
           },
         ],
-        success_url: `${origin}/profile?success=true&plan=${plan}`,
-        cancel_url: `${origin}/profile?success=false`,
+        success_url: `${origin}/success?success=true&plan=${plan}&uid=${uid}`,
+        cancel_url: `${origin}/success?success=false`,
       });
 
       res.status(200).json({

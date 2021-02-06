@@ -2,8 +2,12 @@ import React from "react";
 import styles from "./Plan.module.scss";
 import { loadStripe } from "@stripe/stripe-js";
 import axios from "axios";
+import { useSelector } from "react-redux";
+import { State } from "../../../redux/store";
 
 function Plan(): JSX.Element {
+  const { user } = useSelector((state: State) => state);
+
   const subscribe = async () => {
     try {
       const { data } = await axios.post(
@@ -11,6 +15,7 @@ function Plan(): JSX.Element {
         {
           plan: "basic",
           origin: window.location.origin,
+          uid: user.uid,
         }
       );
 
