@@ -13,7 +13,7 @@ function Profile(): JSX.Element {
   const router: NextRouter = useRouter();
   const [plan, setPlan] = useState<string>("");
 
-  const plans = {
+  const plans: any = {
     basic: "Basic",
     standard: "Standard",
     premium: "Premium",

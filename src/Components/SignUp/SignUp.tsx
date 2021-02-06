@@ -10,6 +10,7 @@ import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import Footer from "../Footer/Footer";
 import apiInstance from "../../axios/api";
+import axios from "axios";
 
 function SignUp(): JSX.Element {
   const router: NextRouter = useRouter();
@@ -30,10 +31,13 @@ function SignUp(): JSX.Element {
     try {
       const user = await auth.createUserWithEmailAndPassword(email, password);
 
-      const { data } = await apiInstance.post("/create-customer", {
-        email: user.user?.email,
-        uid: user.user?.uid,
-      });
+      const { data } = await axios.post(
+        `${window.location.origin}/api/create-customer`,
+        {
+          email: user.user?.email,
+          uid: user.user?.uid,
+        }
+      );
 
       console.log("datery", data);
     } catch (e) {

@@ -7,7 +7,7 @@ function SuccessPage() {
 
 export default SuccessPage;
 
-export const getServerSideProps: any = async ({ query }) => {
+export const getServerSideProps: any = async ({ query }: any) => {
   const { success, plan, uid } = query;
 
   if (success === "true" || success === true) {
