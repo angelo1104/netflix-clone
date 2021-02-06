@@ -1,7 +1,33 @@
 import React from "react";
 import styles from "./Plan.module.scss";
+import { loadStripe } from "@stripe/stripe-js";
+import axios from "axios";
 
 function Plan(): JSX.Element {
+  const subscribe = async () => {
+    try {
+      const { data } = await axios.post(
+        `${window.location.origin}/api/create-checkout-session`,
+        {
+          plan: "basic",
+          origin: window.location.origin,
+        }
+      );
+
+      console.log("received data");
+      const stripe = await loadStripe(
+        process.env.NEXT_PUBLIC_STRIPE_PUBLISHABLE_KEY
+      );
+
+      await stripe?.redirectToCheckout({
+        sessionId: data.id,
+      });
+      console.log("redirecting");
+    } catch (e) {
+      console.log(e);
+    }
+  };
+
   return (
     <div className={styles.plan}>
       <div>
@@ -9,7 +35,9 @@ function Plan(): JSX.Element {
         <p className={styles.price}>$6.99/month</p>
       </div>
 
-      <button className={styles.subscribe}>Subscribe</button>
+      <button className={styles.subscribe} onClick={subscribe}>
+        Subscribe
+      </button>
     </div>
   );
 }
