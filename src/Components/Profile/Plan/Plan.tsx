@@ -5,7 +5,14 @@ import axios from "axios";
 import { useSelector } from "react-redux";
 import { State } from "../../../redux/store";
 
-function Plan(): JSX.Element {
+interface Props {
+  title: string;
+  price: number;
+  plan: string;
+  currentPlan: string;
+}
+
+function Plan({ title, plan, price, currentPlan }: Props): JSX.Element {
   const { user } = useSelector((state: State) => state);
 
   const subscribe = async () => {
@@ -13,7 +20,7 @@ function Plan(): JSX.Element {
       const { data } = await axios.post(
         `${window.location.origin}/api/create-checkout-session`,
         {
-          plan: "basic",
+          plan: plan,
           origin: window.location.origin,
           uid: user.uid,
         }
@@ -36,11 +43,15 @@ function Plan(): JSX.Element {
   return (
     <div className={styles.plan}>
       <div>
-        <h5 className={styles.title}>Netflix Basic</h5>
-        <p className={styles.price}>$6.99/month</p>
+        <h5 className={styles.title}>{title}</h5>
+        <p className={styles.price}>${price}/month</p>
       </div>
 
-      <button className={styles.subscribe} onClick={subscribe}>
+      <button
+        className={styles.subscribe}
+        onClick={subscribe}
+        disabled={currentPlan === plan}
+      >
         Subscribe
       </button>
     </div>

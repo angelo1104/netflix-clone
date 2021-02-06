@@ -32,3 +32,8 @@
 .subscribe:hover {
   background-color: #f40612;
 }
+
+.subscribe:disabled {
+  background-color: #d8d8d8;
+  color: gray;
+}

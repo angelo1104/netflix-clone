@@ -1,25 +1,36 @@
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import styles from "./Profile.module.scss";
 import Navbar from "../NavBar/Navbar";
 import avatar from "../NavBar/avatar.png";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
-import { auth } from "../../firebase/firebase";
+import { auth, database } from "../../firebase/firebase";
 import { NextRouter, useRouter } from "next/router";
 import Plan from "./Plan/Plan";
 
 function Profile(): JSX.Element {
   const { user } = useSelector((state: State) => state);
   const router: NextRouter = useRouter();
+  const [plan, setPlan] = useState<string>("");
 
-  const { success, plan } = router.query;
-
-  useEffect(() => {
-    console.log("success", success, plan);
-  }, []);
+  const plans = {
+    basic: "Basic",
+    standard: "Standard",
+    premium: "Premium",
+    select: "Please select a plan.",
+  };
 
   useEffect(() => {
     if (!auth.currentUser?.email) router.replace("/auth/login");
+    else {
+      database
+        .collection("users")
+        .doc(auth.currentUser.uid)
+        .onSnapshot((snapshot) => {
+          const user = snapshot.data();
+          setPlan(user?.status);
+        });
+    }
   }, [user]);
 
   const signOut = () => {
@@ -46,9 +57,32 @@ function Profile(): JSX.Element {
               value={user?.email}
             />
 
-            <h3 className={styles.plans_title}>Plans</h3>
+            <h3 className={styles.plans_title}>{plans[plan]}</h3>
 
-            <Plan />
+            <Plan
+              title={"Netflix Premium"}
+              price={9.99}
+              currentPlan={plan}
+              plan={"premium"}
+            />
+
+            <hr className={styles.divider} />
+
+            <Plan
+              title={"Netflix Basic"}
+              price={6.99}
+              currentPlan={plan}
+              plan={"basic"}
+            />
+
+            <hr className={styles.divider} />
+
+            <Plan
+              title={"Netflix Standard"}
+              price={parseFloat("4.00")}
+              currentPlan={plan}
+              plan={"standard"}
+            />
 
             <hr className={styles.divider} />
 
