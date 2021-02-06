@@ -1,0 +1,25 @@
+.footer {
+  background-color: #000000;
+  color: #757575;
+  font-family: "Inter", sans-serif;
+  display: flex;
+  flex-direction: column;
+  padding: 30px 20%;
+}
+
+.footer_columns {
+  display: flex;
+  justify-content: space-between;
+}
+
+.footer_column {
+  display: flex;
+  flex-direction: column;
+  padding: 30px 0;
+}
+
+.footer_item {
+  color: #757575;
+  margin-bottom: 0;
+  font-size: 14px;
+}

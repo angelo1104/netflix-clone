@@ -1,10 +1,11 @@
-import { useDispatch, useSelector } from "react-redux";
+import { useSelector } from "react-redux";
 import { State, wrapper } from "../redux/store";
 import { useEffect } from "react";
 import { actions } from "../redux/actions";
 import { AnyAction } from "redux";
 import Top from "../Components/Top/Top";
 import { NextRouter, useRouter } from "next/router";
+import Footer from "../Components/Footer/Footer";
 
 function Home() {
   const { user } = useSelector<State, State>((state) => state);
@@ -18,8 +19,9 @@ function Home() {
   return (
     <div className={"app"}>
       <main>
-        <Top></Top>
+        <Top />
       </main>
+      <Footer />
     </div>
   );
 }

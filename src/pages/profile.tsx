@@ -4,11 +4,13 @@ import nookies from "nookies";
 import admin from "firebase-admin";
 import account from "../firebase-account.json";
 import Profile from "../Components/Profile/Profile";
+import Footer from "../Components/Footer/Footer";
 
 function ProfilePage() {
   return (
     <div>
       <Profile />
+      <Footer />
     </div>
   );
 }

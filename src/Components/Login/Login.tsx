@@ -8,6 +8,7 @@ import loader from "../../lottie/loader.json";
 import Lottie from "react-lottie";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
+import Footer from "../Footer/Footer";
 
 function SignUp(): JSX.Element {
   const router: NextRouter = useRouter();
@@ -38,7 +39,7 @@ function SignUp(): JSX.Element {
   return (
     <div className={styles.login_container}>
       <div className={styles.content}>
-        <div className={styles.top_logo}>
+        <div className={styles.top_logo} onClick={() => router.push("/")}>
           <Image src={logo} alt={"netflix logo"} width={200} height={120} />
         </div>
 
@@ -101,6 +102,8 @@ function SignUp(): JSX.Element {
       </div>
 
       <div className={styles.overlay}></div>
+
+      <Footer style={{ background: "rgba(0, 0, 0, 0.75)" }} />
     </div>
   );
 }

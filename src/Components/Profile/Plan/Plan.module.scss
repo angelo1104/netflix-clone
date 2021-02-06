@@ -1,0 +1,34 @@
+.plan {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.title {
+  font-size: 1.2rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 500;
+  margin-bottom: 10px;
+}
+
+.price {
+  font-size: 1rem;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+}
+
+.subscribe {
+  background-color: #e50914;
+  color: white;
+  height: 42px;
+  border: none;
+  border-radius: 3px;
+  padding: 3px 20px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  outline-width: 0;
+}
+
+.subscribe:hover {
+  background-color: #f40612;
+}

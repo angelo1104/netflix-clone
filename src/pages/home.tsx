@@ -8,6 +8,7 @@ import requests from "../tmdb";
 import Banner from "../Components/Banner/Banner";
 import Navbar from "../Components/NavBar/Navbar";
 import { NextRouter, useRouter } from "next/router";
+import Footer from "../Components/Footer/Footer";
 
 function Home() {
   const { user } = useSelector<State, State>((state) => state);
@@ -40,6 +41,8 @@ function Home() {
           <Row title={"Documentaries"} movieUrl={requests.fetchDocumentaries} />
         </div>
       </main>
+
+      <Footer />
     </div>
   );
 }

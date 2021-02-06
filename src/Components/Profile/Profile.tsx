@@ -6,6 +6,7 @@ import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import { auth } from "../../firebase/firebase";
 import { NextRouter, useRouter } from "next/router";
+import Plan from "./Plan/Plan";
 
 function Profile(): JSX.Element {
   const { user } = useSelector((state: State) => state);
@@ -40,6 +41,8 @@ function Profile(): JSX.Element {
             />
 
             <h3 className={styles.plans_title}>Plans</h3>
+
+            <Plan />
 
             <hr className={styles.divider} />
 
