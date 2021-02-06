@@ -9,6 +9,7 @@ import Lottie from "react-lottie";
 import { useSelector } from "react-redux";
 import { State } from "../../redux/store";
 import Footer from "../Footer/Footer";
+import apiInstance from "../../axios/api";
 
 function SignUp(): JSX.Element {
   const router: NextRouter = useRouter();
@@ -28,6 +29,13 @@ function SignUp(): JSX.Element {
     setProcessing(true);
     try {
       const user = await auth.createUserWithEmailAndPassword(email, password);
+
+      const { data } = await apiInstance.post("/create-customer", {
+        email: user.user?.email,
+        uid: user.user?.uid,
+      });
+
+      console.log("datery", data);
     } catch (e) {
       setError(e.message);
       console.log(e);
